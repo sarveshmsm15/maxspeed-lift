@@ -1,0 +1,159 @@
+@import 'tailwindcss';
+
+/* ===== Design Tokens ===== */
+@theme {
+  --color-ivory: #FAF6F0;
+  --color-beige: #EDE5D9;
+  --color-warm-gray: #8C8984;
+  --color-border-light: #DED8CF;
+  --color-charcoal: #171717;
+  --color-primary: #000000;
+  --color-surface: #FAF6F0;
+  --color-accent: #8C8984;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+}
+
+/* ===== Base Styles ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ivory);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-warm-gray);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-charcoal);
+}
+
+/* ===== Selection ===== */
+::selection {
+  background-color: var(--color-charcoal);
+  color: var(--color-ivory);
+}
+
+/* ===== Typography Utilities ===== */
+.heading-display {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.heading-editorial {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.text-body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+.text-label {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ===== Glass Effect ===== */
+.glass {
+  background: rgba(250, 246, 240, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(222, 216, 207, 0.5);
+}
+
+.glass-dark {
+  background: rgba(23, 23, 23, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(140, 137, 132, 0.2);
+}
+
+/* ===== Marquee ===== */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* ===== Elevator Door Animation ===== */
+@keyframes door-open-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes door-open-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+/* ===== Page Transition ===== */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* ===== Fine Line Borders ===== */
+.border-fine {
+  border-color: var(--color-border-light);
+  border-width: 1px;
+}
+
+/* ===== Image reveal ===== */
+.image-reveal {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.image-reveal.revealed {
+  clip-path: inset(0 0 0 0);
+}
